@@ -1,0 +1,10 @@
+﻿<h3>Let's get some information from you to get your account set up!</h3>
+
+<form action="UserDetails" method="post">
+	<p>User Name		<br/><input type="text" name="UserName" required/></p>
+	<p>Email Address	<br /><input type="email" name="Email" required/></p>
+	<p>Password			<br /><input type="password" name="Password" required pattern="([A-Za-z0-9]{8,})\w+"/></p>
+	<p>Age				<br /><input type="number" name="Age" min="13" max="40" required /></p>
+	<input type="submit" value="Click to register!" />
+
+</form>
