@@ -20,6 +20,12 @@ namespace StateManagement.Models
 			this.Age = Age;
 		}
 
+		public User(string UserName, string Password)
+		{
+			this.UserName = UserName;
+			this.Password = Password;
+		}
+
 		public User() { }
 	}
 }

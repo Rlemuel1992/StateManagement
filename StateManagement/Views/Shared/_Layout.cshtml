@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+	<link href="~/Content/Site.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -21,13 +22,16 @@
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
 					@if (ViewBag.CurrentUser != null)
 					{
 						<li>@Html.ActionLink("LOG ME THE HECK OUT CAPTAIN", "LogOut", "Home")</li>
+						<li>@Html.ActionLink("Shop nao", "ListItems", "Home")</li>
+						<li id="Cart">@Html.ActionLink("Checkout", "CheckOut", "Home")</li>
 					}
 					else
 					{
-					<li>@Html.ActionLink("Lets login!", "Login", "Home")</li>
+						<li>@Html.ActionLink("Lets login!", "Login", "Home")</li>
 					}
 				</ul>
             </div>

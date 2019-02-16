@@ -1,0 +1,28 @@
+﻿<link href="~/Content/Site.css" rel="stylesheet" />
+<table class="table">
+	<tr>
+		<th>Item</th>
+		<th>Description</th>
+		<th>Price</th>
+	<tr/>
+	@foreach (var item in ViewBag.ItemsList)
+	{
+	<tr>
+		<td>@item.ItemName</td>
+		<td>@item.Description</td>
+		<td>@item.Price</td>
+		
+		<td><a href="/Home/AddItem?ItemName=@item.ItemName"> Add</a></td>
+		<th></th>
+	</tr>
+	}	
+</table>
+<table class="table">
+	<tr>
+		<td>Potion</td><td></td><td></td><td></td><td id="MiddleTable">Too Strong</td><td id="EndTable">∞</td><td><a href="/Home/PotionSeller">add..?</a></td>
+	</tr>
+</table>
+<form action="CheckOut" method="post">
+	<input type="submit" value="Checkout" />
+</form>
+

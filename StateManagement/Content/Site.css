@@ -22,3 +22,28 @@ select,
 textarea {
     max-width: 280px;
 }
+#Cart{
+	text-align:end;
+	right: -100%;
+	font-size: .3in;
+}
+#MiddleTable {
+	margin-left: 100px;
+	padding-left: 100px;
+	
+	
+}
+#EndTable {
+	margin-left: 100px;
+	padding-left: 100px;
+}
+#PotionSeller {
+	background-image: url('../Images/Potion Seller.jpg');
+	
+}
+#Fool {
+	color:firebrick;
+	font-size: .7in;
+	background-color: black;
+	text-align:center;
+}
