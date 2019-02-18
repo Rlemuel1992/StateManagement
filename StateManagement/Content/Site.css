@@ -1,49 +1,59 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
-#Cart{
-	text-align:end;
+
+#Cart {
+	text-align: end;
 	right: -100%;
 	font-size: .3in;
 }
+
 #MiddleTable {
 	margin-left: 100px;
 	padding-left: 100px;
-	
-	
 }
+
 #EndTable {
 	margin-left: 100px;
 	padding-left: 100px;
 }
+
 #PotionSeller {
 	background-image: url('../Images/Potion Seller.jpg');
-	
 }
+
 #Fool {
-	color:firebrick;
+	color: firebrick;
 	font-size: .7in;
 	background-color: black;
-	text-align:center;
+	text-align: center;
+}
+
+#plzwork {
+	text-align: center;
+}
+
+#Intro {
+	text-align: center;
 }

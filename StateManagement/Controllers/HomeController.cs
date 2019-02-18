@@ -13,23 +13,19 @@ namespace StateManagement.Controllers
 
 		public List<Products> ItemsList = new List<Products>
 		{
-			new Products("Hot Chocolate", "Milk, Cocoa, Sugar, Fat", 1.99),
-			new Products("Latte", "Milk, Coffee", 1.99),
-			new Products("Coffee", "Coffee, Water", 1.00),
-			new Products("Tea",  "Black Tea", 1.00),
-			new Products("Frozen Lemonade",  "Lemon, Sugar, Ice", 1.99),
-        
+			new Products("Hot Chocolate", "Milk, Cocoa, Sugar, Fat", 1.99, 1),
+			new Products("Latte", "Milk, Coffee", 1.99, 1),
+			new Products("Coffee", "Coffee, Water", 1.00, 1),
+			new Products("Tea",  "Black Tea", 1.00, 1),
+			new Products("Frozen Lemonade",  "Lemon, Sugar, Ice", 1.99, 1),
+
 		};
 		public List<Products> ShoppingCart = new List<Products>();
-		List<User> Logins = new List<User>();
 
 
 
 		public ActionResult Index()
 		{
-			
-			
-			
 
 			ViewBag.CurrentUser = Session["CurrentUser"];
 			return View();
@@ -45,32 +41,31 @@ namespace StateManagement.Controllers
 		}
 		public ActionResult RegisterUser()
 		{
-			
+
 			return View();
 		}
 		public ActionResult UserDetails(User u)
 		{
-			
-			
-		
+
+
+
 
 			if (Session["CurrentUser"] != null)
 			{
-				//Logins.Add(u);
 				u = (User)Session["CurrentUser"];
-				//Session["CurrentUser"] = u;
 				ViewBag.CurrentUser = u;
-				
+
 				return View();
 			}
 			else
 			{
-				Logins.Add(u);
+				var LoginsList = (Session["LoginsList"] as List<User>) ?? new List<User>();
+				LoginsList.Add(u);
 				ViewBag.CurrentUser = u;
 				Session["CurrentUser"] = u;
-				Session["LoginsList"] = Logins;
+				Session["LoginsList"] = LoginsList;
 				return RedirectToAction("Index");
-				
+
 			}
 		}
 
@@ -82,45 +77,43 @@ namespace StateManagement.Controllers
 		public ActionResult Login()
 		{
 
-			
+
 			return View();
 		}
 		public ActionResult ValidateLogin(User TryLogin)
 		{
-			
-			Logins = (List<User>)Session["LoginsList"];
+			var LoginsList = (Session["LoginsList"] as List<User>) ?? new List<User>();
 
 			if (Session["CurrentUser"] == null)
 			{
 
-				foreach (User person in Logins)
+				var tempUser = LoginsList.Find(u => u.UserName == TryLogin.UserName);
+				if (tempUser != null)
 				{
-					if (person.UserName == TryLogin.UserName && person.Password == TryLogin.Password)
+					if (tempUser.Password == TryLogin.Password)
 					{
-						Session["CurrentUser"] = person;
+						Session["CurrentUser"] = tempUser;
 						ViewBag.UserName = TryLogin.UserName;
 						return RedirectToAction("UserDetails");
 					}
-					else if (person.Password != TryLogin.Password && person.UserName != TryLogin.UserName)
-					{
-						ViewBag.Error = "Both inputs are wrong";
-						return View("Error");
-					}
-					else if (person.UserName != TryLogin.UserName)
-					{
-						ViewBag.Error = "Wrong Username!";
-						return View("Error");
-					}
-					else if (person.Password != TryLogin.Password)
+
+					else if (tempUser.Password != TryLogin.Password)
 					{
 						ViewBag.Error = "Wrong Password";
 						return View("Error");
 					}
-					
+
+				}
+				else
+				{
+					ViewBag.Error = "Wrong Username!";
+					return View("Error");
 				}
 			}
-			ViewBag.Error = "No valid input";
+
+			ViewBag.Error = "Already logged in!!";
 			return View("Error");
+
 		}
 
 		public ActionResult Error()
@@ -132,11 +125,12 @@ namespace StateManagement.Controllers
 
 		public ActionResult ListItems()
 		{
+			
 			ViewBag.CurrentUser = Session["CurrentUser"];
 			ViewBag.ItemsList = ItemsList;
 			return View();
 		}
-		public ActionResult AddItem(string itemName, int quantity)
+		public ActionResult AddItem(int quantity, string itemName)
 		{
 			if (Session["ShoppingCart"] != null)
 			{
@@ -146,11 +140,11 @@ namespace StateManagement.Controllers
 			{
 				if (item.ItemName == itemName)
 				{
-					//for (int i = 0; i < quantity; i++)
-					//{
-					//	ShoppingCart.Add(item);
-					//}
-					ShoppingCart.Add(item);
+					for (int i = 0; i < quantity; i++)
+					{
+						ShoppingCart.Add(item);
+					}
+
 				}
 			}
 
@@ -182,6 +176,11 @@ namespace StateManagement.Controllers
 			ShoppingCart.RemoveAt(index);
 			Session["ShoppingCart"] = ShoppingCart;
 			return RedirectToAction("CheckOut");
+		}
+		public ActionResult RemoveAll()
+		{
+			Session["ShoppingCart"] = null;
+			return RedirectToAction("ListItems");
 		}
 		private int IsExist(string id)
 		{

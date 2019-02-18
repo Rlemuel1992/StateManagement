@@ -1,14 +1,16 @@
-﻿
-<h1>Welcome to my awesome cool website lad.</h1>
-
-@if (ViewBag.CurrentUser == null)
-{
-<p>Click on @Html.ActionLink("Here", "RegisterUser", "Home") to register!</p>
-<p> Or click @Html.ActionLink("Here", "Login", "Home") to log on!</p>
-}
-else
-{
-<p> Hello @ViewBag.CurrentUser.UserName </p>
+﻿<div id="Intro">
 	
-}
+	<h1 id="plzwork">Welcome to my awesome cool website lad.</h1>
 
+	@if (ViewBag.CurrentUser == null)
+	{
+		<p>Click on @Html.ActionLink("Here", "RegisterUser", "Home") to register!</p>
+		<p> Or click @Html.ActionLink("Here", "Login", "Home") to log on!</p>
+	}
+	else
+	{
+		<p> Hello @ViewBag.CurrentUser.UserName </p>
+
+	}
+
+</div>

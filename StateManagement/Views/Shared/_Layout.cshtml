@@ -1,7 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<link href="~/Content/Site.css" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -32,6 +31,7 @@
 					else
 					{
 						<li>@Html.ActionLink("Lets login!", "Login", "Home")</li>
+						<li>@Html.ActionLink("Register here!", "RegisterUser", "Home")</li>
 					}
 				</ul>
             </div>
@@ -41,7 +41,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year C'MON IIIINNNNN</p>
+            <p> @DateTime.Now.AddYears(-281) :^)</p>
         </footer>
     </div>
 

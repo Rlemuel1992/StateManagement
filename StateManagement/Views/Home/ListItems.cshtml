@@ -4,6 +4,9 @@
 		<th>Item</th>
 		<th>Description</th>
 		<th>Price</th>
+		<th>Add 1</th>
+		<th>Add 5</th>
+		<th>Add 100</th>
 	<tr/>
 	@foreach (var item in ViewBag.ItemsList)
 	{
@@ -11,8 +14,10 @@
 		<td>@item.ItemName</td>
 		<td>@item.Description</td>
 		<td>@item.Price</td>
-		
-		<td><a href="/Home/AddItem?ItemName=@item.ItemName"> Add</a></td>
+	
+		<td><a href="/Home/AddItem?Quantity=1&ItemName=@item.ItemName"> Add </a></td>
+		<td><a href="/Home/AddItem?Quantity=5&ItemName=@item.ItemName"> Add </a></td>
+		<td><a href="/Home/AddItem?Quantity=100&ItemName=@item.ItemName"> Add </a></td>
 		<th></th>
 	</tr>
 	}	

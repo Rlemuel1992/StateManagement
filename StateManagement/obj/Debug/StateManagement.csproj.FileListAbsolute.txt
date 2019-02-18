@@ -77,4 +77,3 @@ C:\Users\Ronad\source\repos\StateManagement\StateManagement\obj\Debug\StateManag
 C:\Users\Ronad\source\repos\StateManagement\StateManagement\obj\Debug\StateManagement.csproj.CopyComplete
 C:\Users\Ronad\source\repos\StateManagement\StateManagement\obj\Debug\StateManagement.dll
 C:\Users\Ronad\source\repos\StateManagement\StateManagement\obj\Debug\StateManagement.pdb
-C:\Users\Ronad\source\repos\StateManagement\StateManagement\obj\Debug\StateManagement.csprojAssemblyReference.cache
